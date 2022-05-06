@@ -1,0 +1,303 @@
+import React from "react";
+import { Link } from "react-router-dom";
+import { useState } from "react";
+
+import { userHandler, passwordHandler, SubmitHandler } from "./Handler.js";
+
+
+const Signup = () => {
+
+  const [userErr, SetUserErr] = useState(false);
+  const [user, SetUser] = useState("");
+  const [password, SetPassword] = useState("");
+  const [passwordErr, SetPasswordErr] = useState(false);
+
+ const url =  "https://liveapi.dcodeai.com/users/studentLogin/login";
+
+  return (
+    <>
+      <div className="flexbox-container">
+      <div id="message"></div>
+
+        <div className="flex-items">
+          <div className="flexbox-item flexbox-item-1">
+            <h1>
+              Learn AI for free, <br /> signup for 7 days Trail.
+            </h1>
+            <hr />
+            <p>
+              Now learning coding with Python, Machine Learning <br /> and Data
+              Science is easy, like never before
+            </p>
+          </div>
+
+          <div className="flexbox-item flexbox-item-3">
+            <div className="col-1 ">
+              <img src="./assets/Group 59.png" alt="img" />
+              <p>
+                Easy Modules & <br /> Live Projects
+              </p>
+            </div>
+            <div className="col-1 ">
+              <img id="bonusimg" src="./assets/Group 75.png" alt="img" />{" "}
+              <p>
+                Bonus Coins & <br /> Subscriptions
+              </p>
+            </div>
+            <div className="col-1 ">
+              <img src="./assets/Group 84.png" alt="img" />
+              <p>
+                AI-Enabled <br /> Buddy Doru & 1:1 <br />
+                Live Doubt <br />
+                Clearing <br /> Sessions
+              </p>
+            </div>
+            <div className="col-1 ">
+              <img className="tab" src="./assets/Group 78.png" alt="img" />
+              <p>DIY Modules</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="flexbox-item flexbox-item-2">
+          <form  onSubmit={(e)=> SubmitHandler(e,user,password,url)} >
+            <img src="./assets/Group 100.png" alt="img" />
+            <h1>Sign In</h1>
+            <p className="option" type="text" placeholder="As Individuals">
+              As Individuals
+            </p>
+            <p className="option" type="text" placeholder="As Schools">
+              
+              <Link to="/Student">As Schools</Link>
+            </p>
+            <input
+              className="inputarea"
+              type="text"
+              placeholder="Email/Mobile"
+              onChange={(e) => userHandler(e, SetUser, SetUserErr)}
+            />
+            <br />
+            {userErr ? <span>Input proper name</span> : ""}
+
+            <input
+              className="inputarea"
+              type="password"
+              placeholder="Password"
+              onChange={(e) => passwordHandler(e, SetPassword, SetPasswordErr)}
+
+            />
+            <br />
+            {passwordErr ? <span>Input proper password</span> : ""}
+            <br/>
+
+            <label>
+              <input
+                className="checkbox"
+                type="checkbox"
+                
+              />
+              Remember me &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Forgot your
+              password
+            </label>
+            <br />
+            <button type="submit"> Log In</button>
+            <hr className="formhr" />
+
+            <div className="loginoption">
+              <label className="fb">
+                <img src="./assets/Group 105.png" alt="img" />
+                <span>Sign Up / Sign in with Facebook</span>
+              </label>
+              <label className="fb">
+                <img src="./assets/Group 107.png" alt="img" />{" "}
+                <span> Sign Up / Sign In with Google</span>
+              </label>
+            </div>
+
+            <div className="createnew">
+              <p>To create and account signup</p>
+              <p> sign in Corporate</p>
+            </div>
+          </form>
+          <br />
+          <p id="copywrite">&copy; 2020 DcodeAI Private Limited</p>
+        </div>
+        <br />
+      </div>
+    </>
+  );
+};
+
+export default Signup;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import { Link } from "react-router-dom";
+import { useState } from "react";
+import { userHandler, passwordHandler, SubmitHandler } from "./Handler.js";
+
+const Student = () => {
+  const [userErr, SetUserErr] = useState(false);
+  const [user, SetUser] = useState("");
+  const [password, SetPassword] = useState("");
+  const [passwordErr, SetPasswordErr] = useState(false);
+
+
+ const url =  "https://liveapi.dcodeai.com/users/studentLogin/login";
+
+  return (
+    <>
+      <div className="flexbox-container">
+        <div id="message"></div>
+
+        <div className="flex-items">
+          <div className="flexbox-item flexbox-item-1">
+            <h1>
+              Learn AI for free, <br /> signup for 7 days Trail.
+            </h1>
+            <hr />
+            <p>
+              Now learning coding with Python, Machine Learning <br /> and Data
+              Science is easy, like never before
+            </p>
+          </div>
+
+          <div className="flexbox-item flexbox-item-3">
+            <div className="col-1 ">
+              <img src="./assets/Group 59.png" alt="img" />
+              <p>
+                Easy Modules & <br /> Live Projects
+              </p>
+            </div>
+            <div className="col-1 ">
+              <img id="bonusimg" src="./assets/Group 75.png" alt="img" />{" "}
+              <p>
+                Bonus Coins & <br /> Subscriptions
+              </p>
+            </div>
+            <div className="col-1 ">
+              <img src="./assets/Group 84.png" alt="img" />
+              <p>
+                AI-Enabled <br /> Buddy Doru & 1:1 <br />
+                Live Doubt <br />
+                Clearing <br /> Sessions
+              </p>
+            </div>
+            <div className="col-1 ">
+              <img className="tab" src="./assets/Group 78.png" alt="img" />
+              <p>DIY Modules</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="flexbox-item flexbox-item-23 ">
+          <form id="studentlogin" onSubmit={(e)=> SubmitHandler(e,user,password,url)}>
+            <img src="./assets/Group 100.png" alt="img" />
+            <h1>Sign In</h1>
+            <p className="option" type="text" placeholder="As Individuals">
+              <Link to="/">As Individuals</Link>
+            </p>
+            <p className="option" type="text" placeholder="As Schools">
+              As Schools
+            </p>
+            <input
+              className="inputarea"
+              type="text"
+              placeholder="Email/Mobile"
+              onChange={(e) => userHandler(e, SetUser, SetUserErr)}
+            />
+            <br />
+            {userErr ? <span>Input proper name</span> : ""}
+            <br />
+            <input
+              className="inputarea"
+              type="password"
+              placeholder="Password"
+              onChange={(e) => passwordHandler(e, SetPassword, SetPasswordErr)}
+            />
+            <br />
+            {passwordErr ? <span>Input proper password</span> : ""}
+            <br />
+            <br />
+            <label>
+              <input
+                className="checkbox"
+                type="checkbox"
+              
+              />
+              Remember me &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Forgot your
+              password
+            </label>
+            <br />
+            <button type="submit"> Log In</button>
+            <hr className="formhr" />
+          </form>
+          <br />
+          <p id="copywriteS">&copy; 2020 DcodeAI Private Limited</p>
+        </div>
+        <br />
+      </div>
+    </>
+  );
+};
+
+export default Student;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
