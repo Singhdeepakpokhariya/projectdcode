@@ -53,8 +53,10 @@ const Explore = () => {
 
   function goto(name) {
     console.log(name);
-    navigate.push("/ModuleDashboard", { name: name });
+    localStorage.setItem("name", name);
+    navigate.push("/ModuleDashboard");
   }
+
   // function gotoModule() {
   //   navigate.push("/Dashboard");
   // }

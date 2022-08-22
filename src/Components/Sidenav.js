@@ -2,6 +2,10 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 const Sidenav = () => {
+  let path = "/Dash";
+  if (localStorage.getItem("name") != null) {
+    path = "/ModuleDashboard";
+  }
   return (
     <>
       <main>
@@ -10,7 +14,7 @@ const Sidenav = () => {
           className="d-flex  flex-column flex-shrink-0 bg-light position-fixed"
         >
           <NavLink
-            to="/Dashboard"
+            to={path}
             className="d-block p-3 link-dark text-decoration-none"
             title=""
             data-bs-toggle="tooltip"
@@ -24,7 +28,8 @@ const Sidenav = () => {
           <ul className="nav nav-pills nav-flush flex-column mb-auto text-center">
             <li className="nav-item">
               <NavLink
-                to="/ModuleDashboard"
+                // to="/ModuleDashboard"
+                to={path}
                 className="nav-link  py-3 border-bottom"
                 aria-current="page"
                 title=""

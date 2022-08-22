@@ -16,40 +16,36 @@ const CommonProgress = (props) => {
               <div className="row">
                 <div className="Submission my-2  ">
                   <div className="d-flex flex-direction-row  justify-content-center Ahead ">
-                    <p className="py-2 mx-4" ><Link to="/Achievements" >Achievement</Link></p>
-                    <p className="py-2 mx-4" > <Link  to='/ProgressBars'> Progress</Link></p>
-                    <p className="py-2 mx-4 " ><Link  > Leauge</Link></p>
+                    <p className="py-2 mx-4">
+                      <Link to="/Achievements">Achievement</Link>
+                    </p>
+                    <p className="py-2 mx-4">
+                      <Link to="/ProgressBars"> Progress</Link>
+                    </p>
+                    <p className="py-2 mx-4 ">
+                      <Link to="/League"> League</Link>
+                    </p>
                   </div>
-              
                 </div>
 
-              <div className="d-flex flex-direction-row mx-5 my-5 Pro ">
+                <div className="d-flex flex-direction-row mx-5 my-5 CirPro ">
                   {props.circular}
                   {props.zeroProgress}
 
-                  <div className="d-flex  mx-5 subjects" >
+                  <div className="d-flex mx-5 subjects">
                     {props.progress}
                     {props.startCourse}
-                     
                   </div>
-              </div>
-                
-                
-              
-                   
-
-
-                
-
-                 
-
-               
-
-                <div className="d-flex justify-content-end" > 
-                 <img  className='' style={{height:"12vh",width:"6vw"}} src="./assets/Group 342.png" alt="img"    />
                 </div>
 
-                
+                <div className="d-flex justify-content-end">
+                  <img
+                    className=""
+                    style={{ height: "12vh", width: "6vw" }}
+                    src="./assets/Group 342.png"
+                    alt="img"
+                  />
+                </div>
               </div>
             </div>
           </div>

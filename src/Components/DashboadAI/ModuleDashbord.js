@@ -4,14 +4,34 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 // import { useParams } from "react-router";
 import { useLocation } from "react-router-dom";
+// import Slider from "react-slick";
+import { useHistory } from "react-router-dom";
+import Carousel from "react-grid-carousel";
 
 const ModuleDashboard = () => {
+  const navigate = useHistory();
+
+  // const sliderSettings = {
+  //   className: "center",
+  //   centerMode: true,
+  //   infinite: false,
+  //   centerPadding: "60px",
+  //   slidesToShow: 2,
+  //   speed: 500,
+  //   rows: 2,
+  //   slidesPerRow: 4,
+  // };
+
   const moduleName = [];
+  const mainModule = [];
+  const mainProject = [];
+  const mainBlock = [];
   const bar = ["./assets/Group 354.png"];
   const [moduleData, setModuleData] = useState([]);
 
   const location = useLocation();
-  const name = location.state.name;
+  const name = localStorage.getItem("name");
+  // const name = "python";
   // console.log(location);
 
   let TopicName;
@@ -22,6 +42,9 @@ const ModuleDashboard = () => {
   // let BOAI;
   const projectName = [];
   const [projectData, setProjectData] = useState([]);
+
+  const blockProjectName = [];
+  const [blockProject, setblockProject] = useState([]);
 
   useEffect(() => {
     let myHeaders = new Headers();
@@ -34,7 +57,7 @@ const ModuleDashboard = () => {
     };
 
     fetch(
-      "https://liveapi.dcodeai.com/users/studentsSubject/getAllSubjectforStudent?=",
+      "https://liveapi.dcodeai.com/users/studentsSubject/getAllSubjectforStudent",
       requestOptions
     )
       .then((response) => response.text())
@@ -48,8 +71,9 @@ const ModuleDashboard = () => {
         for (let i = 0; i < final.result.length; i++) {
           // console.log(final.result[i].subject);
           if (final.result[i].subject == name) {
-            TopicName = setModuleData(final.result[i].modules);
-            pro = setProjectData(final.result[i].projectsModules);
+            setModuleData(final.result[i].modules);
+            setProjectData(final.result[i].projectsModules);
+            setblockProject(final.result[i].blocksProjects);
           }
         }
         // CV = setModuleData(final.result[i].modules);
@@ -61,37 +85,152 @@ const ModuleDashboard = () => {
       .catch((error) => console.log("error", error));
   }, []);
 
+  function goto(id, data, path, type) {
+    // console.log(id);
+    console.log(moduleData);
+    // console.log(name);
+
+    navigate.push("/QDash", {
+      id: id,
+      data: data,
+      name: name,
+      path: path,
+      type: type,
+    });
+  }
+  console.log(moduleData);
+
   for (let i = 0; i < moduleData.length; i++) {
-    // console.log(moduleData[i].name);
+    // console.log(moduleData[i]._id);
     moduleName.push(
-      <div>
-        <div className="Course content2 mx-2 d-flex flex-direction-row">
-          <p>{moduleData[i].name}</p>
-          <img
-            className=""
-            style={{ height: "4vh", width: "2vw" }}
-            src={bar}
-            alt="img"
-          />
+      <Carousel.Item>
+        {/* <div style={{ width: "7vw" }}> */}
+        <div style={{ width: "7vw" }}>
+          <div
+            onClick={() =>
+              goto(
+                moduleData[i]._id,
+                moduleData,
+                "studentsActivity/getQuestionsAccordingToModuleForStudent",
+                1
+              )
+            }
+            className="Course content2  d-flex flex-direction-row my-2 mx-2 "
+          >
+            <p>{moduleData[i].name}</p>
+            <img
+              className="mx-4"
+              style={{ height: "4vh", width: "2vw" }}
+              src={bar}
+              alt="img"
+            />
+          </div>
         </div>
-      </div>
+        {/* </div> */}
+      </Carousel.Item>
     );
   }
-
+  if (moduleData.length > 0) {
+    mainModule.push(
+      <Carousel cols={4} rows={2} gap={0} loop>
+        {moduleName}
+      </Carousel>
+    );
+  }
   for (let i = 0; i < projectData.length; i++) {
     // console.log(projectData[i].name);
     projectName.push(
-      <div className="project p1 mx-1  d-flex flex-direction-row mb-3 ">
-        <img
-          className=""
-          style={{ height: "6vh", width: "3vw" }}
-          src={projectData[i].icon}
-          alt="img"
-        />
-        <p>{projectData[i].name}</p>
-      </div>
+      <Carousel.Item>
+        {/* <div style={{ width: "2.5vw" }}> */}
+        <div style={{ width: "3.5vw" }}>
+          <div
+            onClick={() =>
+              goto(
+                projectData[i]._id,
+                projectData,
+                "projectsWithModule/getProjectsAccordingToModule",
+                2
+              )
+            }
+            className="project p1 mx-1 d-flex flex-direction-row  my-2 "
+            style={{ width: "13vw" }}
+          >
+            <img
+              className=""
+              style={{ height: "6vh", width: "3vw" }}
+              src={projectData[i].icon}
+              alt="img"
+            />
+            <p>{projectData[i].name}</p>
+          </div>
+        </div>
+        {/* </div> */}
+      </Carousel.Item>
     );
   }
+  if (projectData.length > 0) {
+    mainProject.push(
+      <Carousel cols={4} rows={2} gap={0} loop>
+        {projectName}
+      </Carousel>
+    );
+  }
+  for (let i = 0; i < blockProject.length; i++) {
+    console.log(blockProject[i].name);
+    blockProjectName.push(
+      <Carousel.Item>
+        <div style={{ width: "14vw" }}>
+          <div
+            className="project p1 mx-1  d-flex flex-direction-row my-2 "
+            onClick={() =>
+              goto(
+                blockProject[i]._id,
+                blockProject,
+                "projectsWithModule/getProjectsBlocksAccordingToModule",
+                3
+              )
+            }
+          >
+            <img
+              className=""
+              style={{ height: "6vh", width: "3vw" }}
+              src={blockProject[i].icon}
+              alt="img"
+            />
+            <p>{blockProject[i].name}</p>
+          </div>
+        </div>
+      </Carousel.Item>
+    );
+  }
+  if (blockProject.length > 0) {
+    if (blockProject.length > 8) {
+      mainBlock.push(
+        <Carousel cols={4} rows={2} gap={0} loop>
+          {blockProjectName}
+        </Carousel>
+      );
+    } else {
+      mainBlock.push(
+        <Carousel cols={4} rows={2} gap={0} hideArrow loop>
+          {blockProjectName}
+        </Carousel>
+      );
+    }
+  }
+
+  if (blockProject.length > 0) {
+    document.getElementById("AIBlock").style.display = "block";
+    // document.getElementById("Project").style.display = "block";
+  }
+  if (projectData.length > 0) {
+    // document.getElementById("AIBlock").style.display = "block";
+    document.getElementById("Project").style.display = "block";
+  }
+  // if (blockProject.length > 8 && projectData.length > 8) {
+  //   document.getElementsByClassName("Course_content").style.display = "block";
+  //   document.getElementsByClassName("project_content").style.display = "block";
+  // }
 
   // console.log(moduleName);
   return (
@@ -191,8 +330,9 @@ const ModuleDashboard = () => {
                   </p>
                 </div>
 
-                <div className="Course_content d-flex flex-wrap flex-direction-row mx-3 ">
-                  {moduleName}
+                <div className="Course_content d-flex flex-wrap flex-direction-row mx-1 ">
+                  {mainModule}
+                  {/* <Slider {...sliderSettings}>{moduleName}</Slider> */}
                   {/* <div className="Course content1 mx-1  d-flex flex-direction-row ">
                     <p>
                       Course <br /> Content <br /> 1
@@ -264,14 +404,19 @@ const ModuleDashboard = () => {
                 </div>
 
                 <div className="module_name my-1">
-                  <p style={{ marginLeft: "26vw" }}>
+                  <p id="Project" style={{ marginLeft: "26vw" }}>
                     <span>&#123;</span>
                     <span>Projects</span>
                     <span>&#125;</span>
                   </p>
                 </div>
 
-                <div className="project_content d-flex flex-direction-row flex-wrap mx-4">
+                <div className="project_content d-flex flex-direction-row flex-wrap mx-1">
+                  {/* <Carousel cols={4} rows={2} gap={0} loop>
+                    {projectName}
+                  </Carousel> */}
+                  {mainProject}
+
                   {/* <div className="project p1 mx-1  d-flex flex-direction-row mb-3 ">
                     <img
                       className=""
@@ -283,7 +428,6 @@ const ModuleDashboard = () => {
                       Project <br />1
                     </p>
                   </div> */}
-                  {projectName}
                   {/* <div className="project p2 mx-1 d-flex flex-direction-row">
                     <img
                       className=""
@@ -355,6 +499,20 @@ const ModuleDashboard = () => {
                     </p>
                   </div> */}
                 </div>
+                <div className="module_name my-1">
+                  <p id="AIBlock" style={{ marginLeft: "26vw" }}>
+                    <span>&#123;</span>
+                    <span>AI Blocks Projects</span>
+                    <span>&#125;</span>
+                  </p>
+                </div>
+                <div className="project_content d-flex flex-direction-row flex-wrap mx-1">
+                  {/* <Carousel cols={4} rows={2} gap={0} loop>
+                    {blockProjectName}
+                  </Carousel> */}
+                  {mainBlock}
+                </div>
+
                 <div className="d-flex justify-content-end">
                   <img
                     className=""

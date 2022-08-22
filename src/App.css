@@ -965,7 +965,7 @@ span:nth-child(2) {
   height: 13vh;
   width: 13vw;
   border-radius: 1rem;
-  font-size: 1.4vw;
+  font-size: 1vw;
   background-color: white;
   box-shadow: 2px 2px 2px 2px lightgray;
   /* align-items: center; */
@@ -975,10 +975,10 @@ span:nth-child(2) {
   background: #ffbe00;
 }
 .Course p {
-  margin: 0.2vw 0 0 2vw;
+  margin: 0.5vw 0 0 1vw;
 }
 .Course img {
-  margin: 4vw 0 0 2vw;
+  margin: 4vw 0 0 0;
 }
 .project {
   height: 13vh;
@@ -1109,23 +1109,31 @@ span:nth-child(2) {
 .progress,
 .subjects {
   flex-direction: column;
+  height: 60vh;
 }
 .progress img {
   margin-left: 8.5vw;
 }
 
-.Pro div:nth-child(1) {
+.CirPro div:nth-child(1) {
   width: 25vw;
   height: 50vh;
 }
 .progress-bars {
   width: 20vw;
 }
-#progess1 {
+/* #progess1 {
   width: 30vw;
   background-color: #ed1e79;
+} */
+.pro {
+  width: 20vw;
+
+  /* height: 2vh; */
+  /* background-color: #ed1e79; */
 }
-#progess2 {
+
+/* #progess2 {
   width: 10vw;
   background-color: #ffcb00;
 }
@@ -1140,7 +1148,7 @@ span:nth-child(2) {
 #progess5 {
   width: 20vw;
   background-color: #242f62;
-}
+} */
 .doru {
   background-color: transparent;
   flex-direction: column;
@@ -1150,9 +1158,10 @@ span:nth-child(2) {
 }
 
 /* Community */
-#Community {
+/* #Community {
   height: 100vh;
-}
+  overflow-y: scroll;
+} */
 #communitybar {
   width: 25vw;
   height: 2vh;
@@ -1169,13 +1178,19 @@ span:nth-child(2) {
   margin-left: 5vw;
 }
 .Commentbox {
-  width: 26vw;
+  width: 24vw;
   box-shadow: 1px 1px 1px 1px gray;
   border-radius: 0.4rem;
 }
 .comments {
   flex-direction: column;
   font-size: 0.8rem;
+}
+#btn_add_Diss {
+  background-color: #ffffff;
+  border: none;
+  margin-top: -50vh;
+  /* position: sticky; */
 }
 
 /* IndustryProject */
@@ -1467,9 +1482,10 @@ figcaption {
   border-radius: 0.9rem;
 }
 
-#ModuleDashheader {
-  height: 130vh;
-}
+/* #ModuleDashheader {
+  height: 100vh;
+  overflow-y: scroll;
+} */
 
 /* 
  .bi {
@@ -1484,3 +1500,121 @@ figcaption {
 .nav-flush .nav-link {
   border-radius: 0;
 } */
+
+/* QDash */
+#QDash {
+  height: 100vh;
+}
+.module__title__Name {
+  height: 100vh;
+  width: 25vw;
+  margin: 0;
+
+  background-color: #ffffff;
+}
+.moduleQuestions {
+  height: 100vh;
+  width: 75vw;
+  background-color: #f2f8f7;
+  margin: 0;
+}
+#Language {
+  height: 4vh;
+}
+.button_div {
+  margin-top: 5vh;
+}
+.renderQuestion::-webkit-scrollbar {
+  display: none;
+}
+
+button:hover {
+  background-color: rgb(255, 255, 255);
+  color: black;
+}
+
+.previous {
+  background-color: #e1dede;
+  color: black;
+}
+
+.next {
+  background-color: #04ae70;
+  color: white;
+}
+
+.round {
+  border-radius: 50%;
+  width: 2vw;
+  height: 4vh;
+  border: none;
+}
+
+/* AddNewDisscussion */
+
+.description,
+.select,
+.title {
+  width: 60vw;
+  border-radius: 1rem;
+  background-color: rgb(241, 236, 236);
+  border: none;
+}
+.description {
+  height: 20vh;
+}
+
+.title,
+select {
+  height: 5vh;
+}
+.backArrow {
+  color: rgb(202, 198, 198);
+}
+input[type="text"],
+textarea {
+  padding-left: 1vw;
+}
+textarea {
+  padding-top: 1vh;
+}
+
+/* League */
+
+#Leaguepage {
+  height: 120vh;
+}
+
+.tropy,
+.list {
+  height: 100vh;
+}
+.list {
+  background-color: #ecefef;
+  width: 40vw;
+}
+.tropy {
+  background-color: #ffffff;
+  width: 50vw;
+}
+.golden_tropy {
+  padding-top: 10vh;
+}
+caption {
+  font-size: 0.8rem;
+}
+.student_Rank {
+  height: 8vh;
+  width: 28vw;
+  /* background-color: #f49b00; */
+  background-image: linear-gradient(to right, rgb(136, 172, 219), #1d70b7);
+  /* background-image: linear-gradient(to bottom, #f49b00, #7a4e00); */
+
+  border-radius: 0.5rem;
+}
+#AIBlock,
+#Project,
+.Course_content,
+.project_content {
+  display: none;
+}

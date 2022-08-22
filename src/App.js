@@ -39,6 +39,9 @@ import Invoice from "./Components/DashboadAI/Invoice";
 import LinkPopup from "./Components/DashboadAI/LinkPopup";
 import Package from "./Components/DashboadAI/DashBoard/Package";
 import Feedback from "./Components/DashboadAI/Feedback";
+import QDash from "./Components/DashboadAI/DashBoard/QDash";
+import AddNewDisscussion from "./Components/DashboadAI/Community/AddNewDisscussion";
+import League from "./Components/DashboadAI/LeaderBoard/League";
 
 function App() {
   return (
@@ -60,8 +63,9 @@ function App() {
 
       {/* <Sidenav /> */}
 
-      {/* <Dashboard />/ */}
+      {/* <Dashboard /> */}
       {/* <Popup /> */}
+      {/* <Dash /> */}
       {/* <Explore /> */}
       {/* <Achievements /> */}
       {/* <CommonProgress /> */}
@@ -70,7 +74,6 @@ function App() {
       {/* <Community /> */}
       {/* <IndustryProject /> */}
       {/* <Disscussion /> */}
-      {/* <Dash /> */}
       {/* <UnlockexpDash /> */}
       {/* <OrderConfirmation /> */}
       {/* <MyPayment /> */}
@@ -78,7 +81,9 @@ function App() {
       {/* <LinkPopup /> */}
       {/* <Package /> */}
       {/* <Feedback /> */}
-
+      {/* <QDash /> */}
+      {/* <AddNewDisscussion /> */}
+      {/* <League /> */}
       <Switch>
         <Route exact path="/" component={Signup} />
         <Route path="/Cororate" component={Corporate} />
@@ -95,12 +100,16 @@ function App() {
 
         <Route path="/Student" component={Student} />
         <Route path="/Dashboard" component={Dashboard} />
+        <Route path="/Dash" component={Dash} />
+        <Route path="/QDash" component={QDash} />
         <Route path="/ModuleDashboard" component={ModuleDashboard} />
         <Route path="/Explore" component={Explore} />
         <Route path="/Achievements" component={Achievements} />
         <Route path="/ProgressBars" component={ProgressBars} />
+        <Route path="/League" component={League} />
         <Route path="/Community" component={Community} />
         <Route path="/IndustryProject" component={IndustryProject} />
+        <Route path="/AddNewDisscussion" component={AddNewDisscussion} />
       </Switch>
     </>
   );

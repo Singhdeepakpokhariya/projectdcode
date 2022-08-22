@@ -1,18 +1,14 @@
 import React from "react";
 import Sidenav from "../Sidenav";
 import { Link } from "react-router-dom";
-// import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const Projectsdetails = () => {
+  const navigate = useHistory();
 
-  // const navigate = useHistory();
-
-  
-  // function gotologinpage(){
-  //   navigate.push('/')
-  // }
-  // document.querySelector('.lg').addEventListener('click',gotologinpage)
-
+  function gotologinpage() {
+    navigate.push("/");
+  }
 
   const iconbtn = (
     <button className="icon-btn">
@@ -81,7 +77,7 @@ const Projectsdetails = () => {
   );
 
   const setting = (
-    <button id="btn-setting"  style={{ marginLeft: "65vw" }}>
+    <button id="btn-setting" style={{ marginLeft: "65vw" }}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="20"
@@ -107,13 +103,11 @@ const Projectsdetails = () => {
             <div className="col-10 my-4  mx-auto ">
               <div className="row">
                 <div className="module_name my-2 d-flex flex-direction-row justify-content-between ">
-                  <Link to='/Setting' > {setting} </Link>
+                  <Link to="/Setting"> {setting} </Link>
                 </div>
 
                 <div className="d-flex flex-direction-row">
-                  <div
-                    className="mx-3  profilehead "
-                  >
+                  <div className="mx-3  profilehead ">
                     <div className="d-flex flex-direction-row  profilepic">
                       <div className="Profile d-flex flex-direction-row  ">
                         <span className="bracket" id="open">
@@ -172,17 +166,21 @@ const Projectsdetails = () => {
                   <div className=" edit-social mx-3 my-4">
                     <h5 className="mb-2">Account Setting</h5>
                     <div className="d-flex">
-                      
                       {ChangePassword}&nbsp;&nbsp;&nbsp;<p>Change Password</p>
                     </div>
                     <div className="d-flex ">
                       {Unsubscribe}&nbsp;&nbsp;&nbsp;<p>Unsubscribe</p>
                     </div>
                     <div className="d-flex">
-                      {logOut}&nbsp;&nbsp;&nbsp;<p className="lg" >Log Out</p>
+                      {logOut}&nbsp;&nbsp;&nbsp;
+                      <p className="lg" onClick={gotologinpage}>
+                        Log Out
+                      </p>
                     </div>
                     <div className="Allsettings">
-                      <Link to = "/Setting" className="settinglink">View all Settings</Link>
+                      <Link to="/Setting" className="settinglink">
+                        View all Settings
+                      </Link>
                     </div>
                   </div>
                 </div>

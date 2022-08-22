@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Sidenav from "../../Sidenav";
 
 const Dash = () => {
@@ -16,12 +17,14 @@ const Dash = () => {
               <div className="row offset-1 ">
                 <div className="d-flex flex-direction-row mt-3 offset-1 ">
                   <div className="Profile d-flex flex-direction-row  ">
-                    <img
-                      className=" mx-3 "
-                      style={{ height: "6vh", width: "3vw" }}
-                      src="./assets/Group 367.png"
-                      alt="img"
-                    />
+                    <Link to="/Profile">
+                      <img
+                        className=" mx-3 "
+                        style={{ height: "6vh", width: "3vw" }}
+                        src="./assets/Group 367.png"
+                        alt="img"
+                      />
+                    </Link>
                     <p>
                       Lorem's <br /> Dashboard
                     </p>
